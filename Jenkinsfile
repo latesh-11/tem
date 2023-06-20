@@ -5,7 +5,7 @@ pipeline {
         stage("hello test"){
              steps{
                 script {
-                        echo 'hello world sir'
+                          echo ${env.BRANCH_NAME}
                     }
                 }
              }
