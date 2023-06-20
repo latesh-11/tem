@@ -1,38 +1,27 @@
-def getBranchName() {
-    return sh(script: 'git rev-parse --abbrev-ref HEAD', returnStdout: true).trim()
-}
+def SANITIZED_BRANCH_NAME = env.BRANCH_NAME.toLowerCase().replaceAll("/", "-")
 
 pipeline {
     agent any
-    stages {
-        stage("Declarative: Checkout SCM") {
-            steps {
-                checkout scm
-            }
-        }
-
-        stage("hello world develop") {
-            steps {
+     stages{
+         stage("hello world develop"){
+             steps{
                 script {
-                    def branchName = getBranchName()
-                    echo "Branch Name: ${branchName}"
-                    if (branchName == 'develop') {
-                        sh "whoami"
+                    if (env.BRANCH_NAME == 'develop') {
+                        echo 'hello world develop'
                     }
                 }
-            }
-        }
-
-        stage("hello world master") {
-            steps {
+             }
+         }
+     }
+      stages{
+         stage("hello world master"){
+             steps{
                 script {
-                    def branchName = getBranchName()
-                    echo "Branch Name: ${branchName}"
-                    if (branchName == 'master') {
-                        sh "pwd"
+                    if (env.BRANCH_NAME == 'master') {
+                        echo 'hello world master'
                     }
                 }
-            }
-        }
-    }
-}
+             }
+         }
+     }
+ }
