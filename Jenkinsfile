@@ -1,4 +1,4 @@
-def SANITIZED_BRANCH_NAME = env.BRANCH_NAME.toLowerCase().replaceAll("/", "-")
+// def SANITIZED_BRANCH_NAME = env.BRANCH_NAME.toLowerCase().replaceAll("/", "-")
 
 pipeline {
     agent any
@@ -7,6 +7,7 @@ pipeline {
              steps{
                 script {
                     if (env.BRANCH_NAME == 'develop') {
+                        echo ${env.BRANCH_NAME}
                         echo 'hello world develop'
                     }
                 }
