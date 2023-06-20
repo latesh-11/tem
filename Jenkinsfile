@@ -1,10 +1,11 @@
 def SANITIZED_BRANCH_NAME = env.BRANCH_NAME ? env.BRANCH_NAME.toLowerCase().replaceAll("/", "-") : "default-branch-name"
 pipeline {
     agent any
-     stages{
+    stages {
         stage("hello world develop") {
             steps {
                 script {
+                    echo "Branch Name: ${env.BRANCH_NAME}"
                     if (env.BRANCH_NAME == 'develop') {
                         sh "whoami"
                     }
@@ -15,6 +16,7 @@ pipeline {
         stage("hello world master") {
             steps {
                 script {
+                    echo "Branch Name: ${env.BRANCH_NAME}"
                     if (env.BRANCH_NAME == 'master') {
                         sh "pwd"
                     }
@@ -22,4 +24,4 @@ pipeline {
             }
         }
     }
- }
+}
