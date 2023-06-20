@@ -7,7 +7,7 @@ pipeline {
              steps{
                 script {
                     if (env.BRANCH_NAME == 'develop') {
-                        echo 'hello world develop'
+                        sh "pwd"
                     }
                 }
              }
