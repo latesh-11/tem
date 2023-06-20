@@ -1,11 +1,7 @@
 def SANITIZED_BRANCH_NAME = env.BRANCH_NAME.toLowerCase().replaceAll("/", "-")
 
 pipeline {
-    agent {
-      node {
-             label 'docker-agent'
-        }
-    }
+    agent any
      stages{
          stage("hello world develop"){
              steps{
