@@ -6,7 +6,7 @@ pipeline {
              steps{
                 script {
                     if (env.BRANCH_NAME == 'develop') {
-                        echo 'hello world develop'
+                        sh 'whoami'
                     }
                 }
              }
@@ -16,7 +16,7 @@ pipeline {
              steps{
                 script {
                     if (env.BRANCH_NAME == 'master') {
-                        sh 'echo "hello world master "'
+                        sh 'pwd'
                     }
                 }
              }
