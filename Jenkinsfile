@@ -4,22 +4,21 @@ pipeline {
      stages{
         stage("hello world develop") {
             steps {
+                script {
                     if (env.BRANCH_NAME == 'develop') {
-                        script {
-                            sh 'whoami'
-                        }
-                        
+                        sh "whoami"
                     }
+                }
             }
         }
 
         stage("hello world master") {
             steps {
+                script {
                     if (env.BRANCH_NAME == 'master') {
-                        script {
-                            sh 'pwd'
-                        }
+                        sh "pwd"
                     }
+                }
             }
         }
     }
