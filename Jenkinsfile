@@ -5,7 +5,10 @@ pipeline {
         stage("hello world develop") {
             steps {
                     if (env.BRANCH_NAME == 'develop') {
-                        sh 'whoami'
+                        script {
+                            sh 'whoami'
+                        }
+                        
                     }
             }
         }
@@ -13,7 +16,9 @@ pipeline {
         stage("hello world master") {
             steps {
                     if (env.BRANCH_NAME == 'master') {
-                        sh 'pwd'
+                        script {
+                            sh 'pwd'
+                        }
                     }
             }
         }
