@@ -16,7 +16,7 @@ pipeline {
              steps{
                 script {
                     if (env.BRANCH_NAME == 'master') {
-                        echo 'hello world master'
+                        sh 'echo "hello world master "'
                     }
                 }
              }
