@@ -3,7 +3,7 @@ def SANITIZED_BRANCH_NAME = env.BRANCH_NAME ? env.BRANCH_NAME.toLowerCase().repl
 pipeline {
     agent any
     stages {
-        stage("hello world develop") {
+        stage("whomai develop") {
             steps {
                 script {
                     if (env.BRANCH_NAME == 'develop') {
@@ -13,7 +13,7 @@ pipeline {
             }
         }
 
-        stage("hello world master") {
+        stage("pwd master") {
             steps {
                 script {
                     if (env.BRANCH_NAME == 'master') {
