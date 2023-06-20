@@ -1,4 +1,7 @@
-def SANITIZED_BRANCH_NAME = env.BRANCH_NAME ? env.BRANCH_NAME.toLowerCase().replaceAll("/", "-") : "default-branch-name"
+def getBranchName() {
+    return sh(script: 'git rev-parse --abbrev-ref HEAD', returnStdout: true).trim()
+}
+
 pipeline {
     agent any
     stages {
@@ -11,9 +14,9 @@ pipeline {
         stage("hello world develop") {
             steps {
                 script {
-                    sh "git branch -a" // Add this line to check the current branch
-                    echo "Branch Name: ${env.BRANCH_NAME}"
-                    if (env.BRANCH_NAME == 'develop') {
+                    def branchName = getBranchName()
+                    echo "Branch Name: ${branchName}"
+                    if (branchName == 'develop') {
                         sh "whoami"
                     }
                 }
@@ -23,9 +26,9 @@ pipeline {
         stage("hello world master") {
             steps {
                 script {
-                    sh "git branch -a" // Add this line to check the current branch
-                    echo "Branch Name: ${env.BRANCH_NAME}"
-                    if (env.BRANCH_NAME == 'master') {
+                    def branchName = getBranchName()
+                    echo "Branch Name: ${branchName}"
+                    if (branchName == 'master') {
                         sh "pwd"
                     }
                 }
