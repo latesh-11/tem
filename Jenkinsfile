@@ -1,8 +1,16 @@
 // def SANITIZED_BRANCH_NAME = env.BRANCH_NAME.toLowerCase().replaceAll("/", "-")
-
 pipeline {
     agent any
      stages{
+        stage("hello test"){
+             steps{
+                script {
+                        echo 'hello world sir'
+                    }
+                }
+             }
+         
+        
          stage("hello world develop"){
              steps{
                 script {
@@ -23,5 +31,6 @@ pipeline {
                 }
              }
          }
+         
      }
  }
