@@ -4,7 +4,7 @@ pipeline {
     stages {
         stage("hello world develop") {
             when {
-                expression { env.BRANCH_NAME == 'develop' }
+                if { env.BRANCH_NAME == 'develop' }
             }
             steps {
                 echo 'hello world develop'
@@ -13,7 +13,7 @@ pipeline {
         
         stage("hello world master") {
             when {
-                expression { env.BRANCH_NAME == 'master' }
+                if { env.BRANCH_NAME == 'master' }
             }
             steps {
                 echo 'hello world master'
