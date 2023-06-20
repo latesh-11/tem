@@ -1,4 +1,4 @@
-// def SANITIZED_BRANCH_NAME = env.BRANCH_NAME.toLowerCase().replaceAll("/", "-")
+ def SANITIZED_BRANCH_NAME = env.BRANCH_NAME.toLowerCase().replaceAll("/", "-")
 pipeline {
     agent any
      stages{
