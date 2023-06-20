@@ -12,8 +12,7 @@ pipeline {
                 }
              }
          }
-     }
-      stages{
+     
          stage("hello world master"){
              steps{
                 script {
